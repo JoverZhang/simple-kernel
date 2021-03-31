@@ -1,8 +1,8 @@
 all: entry.o kernel.o
 	ld -m elf_i386 -T wakeup.ld -o kernel entry.o kernel.o
 
-kernel.o:
-	gcc -m32 -c kernel.c
+kernel.o: entry.o
+	gcc -fno-stack-protector -m32 -c kernel.c
 
 entry.o:
 	nasm -f elf32 entry.S
