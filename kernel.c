@@ -1,31 +1,36 @@
+#include "./printk.c"
+
 void start_kernel(void)
 {
-	const char *str = "Kernel is started";
-	char *vidptr = (char*)0xb8000; 	//video mem begins here.
-	unsigned int i = 0;
-	unsigned int j = 0;
+	init_printk();
 
-	/* this loops clears the screen
-	* there are 25 lines each of 80 columns; each element takes 2 bytes */
-	while(j < 80 * 25 * 2) {
-		/* blank character */
-		vidptr[j] = ' ';
-		/* attribute-byte - light grey on black screen */
-		vidptr[j+1] = 0x07; 		
-		j = j + 2;
-	}
+	printk("a\n");
+	printk("b\n");
+	printk("c\n");
+	printk("d\n");
+	printk("e\n");
+	printk("f\n");
+	printk("g\n");
+	printk("h\n");
+	printk("i\n");
+	printk("j\n");
+	printk("k\n");
+	printk("l\n");
+	printk("m\n");
+	printk("n\n");
+	printk("o\n");
+	printk("p\n");
+	printk("q\n");
+	printk("r\n");
+	printk("s\n");
+	printk("t\n");
+	printk("u\n");
+	printk("v\n");
+	printk("w\n");
+	printk("x\n");
+	printk("y\n");
+	printk("z\n");
 
-	j = 0;
-
-	/* this loop writes the string to video memory */
-	while(str[j] != '\0') {
-		/* the character's ascii */
-		vidptr[i] = str[j];
-		/* attribute-byte: give character black bg and light grey fg */
-		vidptr[i+1] = 0x07;
-		++j;
-		i = i + 2;
-	}
 	return;
 }
 
