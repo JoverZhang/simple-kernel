@@ -19,4 +19,3 @@ SECTIONS
 		*(.bss)
 	}
 }
-
